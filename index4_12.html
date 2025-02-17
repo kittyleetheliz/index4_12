@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Kitty的3D</title>
+         <script src="https://d3js.org/d3.v7.min.js"></script>
+            <style>
+        svg text{
+        font-size: small
+        }
+    </style>
+    
+    </head>
+
+<body>
+
+<script>
+ 
+var width=800;
+var height=600;
+
+    var svg=d3.select("body")
+    .append("svg")
+    .attr("width",width)
+    .attr("height",height)
+    .attr("id","barChart");
+    
+var last_num=0;
+for(var i=0;i<20;i++){ //i++等於i=i+1
+    var num=random(20,300);
+    
+    svg.append("line")
+    .attr("x1",last_num)
+    .attr("y1",10+(12*(i-1)))
+    .attr("x2",num)
+    .attr("y2",10+(12*i))
+    .attr("stroke","gray");
+    
+     svg.append("circle")
+    .attr("cx",num)
+    .attr("cy",10+(12*i))
+    .attr("r",3)
+    .attr("fill","red");
+
+    svg.append("text")
+    .attr("x",5+num)
+    .attr("y",10+(12*i)+5)
+    .text(num);
+    
+     last_num=num
+    
+}
+svg.append("line")
+    .attr("x1",last_num)
+    .attr("y1",10+(12*(i-1)))
+    .attr("x2",0)
+    .attr("y2",10+(12*i))
+    .attr("stroke","gray");
+    
+function random(N,M){
+return Math.ceil(Math.random()*(M-N)+N)
+}
+    </script>
+    </body>
+</html>
